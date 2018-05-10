@@ -1,6 +1,4 @@
 defmodule InputParser do
-  @shortdoc "Convert Module.function/arity -> {Module, function, arity}"
-
   @moduledoc """
   Parse input from a string definition of a function, into a tuple with
   {Module, function, arity}, so that it can be used for documentation
@@ -34,7 +32,7 @@ defmodule InputParser do
   """
   def parse(definition) do
     parts = String.split(definition, ".")
-    {mod, fun} = Enum.partition(parts, &Regex.match?(~r/^[A-Z]/, &1))
+    {mod, fun} = Enum.split_with(parts, &Regex.match?(~r/^[A-Z]/, &1))
     {fun, arity} = find_function_and_arity(fun)
     {find_module(mod), fun, arity}
   end
@@ -60,11 +58,7 @@ defmodule InputParser do
         matches = Regex.named_captures(fun_arity_regex, List.last(parts))
         %{"arity" => arity, "fun" => fun} = matches
 
-        if arity == "" do
-          arity = nil
-        else
-          arity = String.to_integer(arity)
-        end
+        arity = if arity == "", do: nil, else: String.to_integer(arity)
 
         {String.to_atom(fun), arity}
     end

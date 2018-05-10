@@ -1,6 +1,4 @@
 defmodule Eh do
-  @shortdoc "Lookup Elixir documentation from the command line"
-
   @moduledoc """
   Lookup Elixir documentation for Elixir terms.
 
@@ -36,8 +34,8 @@ defmodule Eh do
 
       {:ok, docs} ->
         for {term, doc} <- Enum.reverse(docs) do
-          IO.ANSI.Docs.print_heading(title(term), monochrome_colors)
-          IO.ANSI.Docs.print(doc, monochrome_colors)
+          IO.ANSI.Docs.print_heading(title(term), monochrome_colors())
+          IO.ANSI.Docs.print(doc, monochrome_colors())
         end
     end
   end

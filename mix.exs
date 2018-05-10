@@ -7,9 +7,9 @@ defmodule Eh.Mixfile do
       version: "0.2.0",
       elixir: "~> 1.0",
       escript: [main_module: Eh],
-      description: description,
-      package: package,
-      deps: dependencies
+      description: description(),
+      package: package(),
+      deps: dependencies()
     ]
   end
 
