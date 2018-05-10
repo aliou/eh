@@ -18,7 +18,7 @@ defmodule Eh.Mixfile do
   end
 
   def dependencies do
-    [{:ex_doc, "~> 0.10.0", only: :dev}, {:earmark, ">= 0.0.0", only: :dev}]
+    [{:ex_doc, "~> 0.18.3", only: :dev}, {:earmark, ">= 1.2.5", only: :dev}]
   end
 
   defp description do
