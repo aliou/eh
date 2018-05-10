@@ -6,7 +6,10 @@ defmodule Eh.Mixfile do
       app: :eh,
       version: "0.2.0",
       elixir: "~> 1.0",
-      escript: [main_module: Eh],
+      escript: [
+        main_module: Eh,
+        strip_beam: false
+      ],
       description: description(),
       package: package(),
       deps: dependencies()
