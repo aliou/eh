@@ -1,5 +1,4 @@
 defmodule InputParser do
-
   @shortdoc "Convert Module.function/arity -> {Module, function, arity}"
 
   @moduledoc """
@@ -43,10 +42,8 @@ defmodule InputParser do
   # From a list of parts, find a loaded module
   # example: input: ["IO", "ANSI", "Docs", "print"] -> IO.ANSI.Docs
   # example: input: ["String", "to_atom"]           -> String
-  defp find_module(parts) when parts == [],
-    do: Kernel
-  defp find_module(parts),
-    do: Module.concat(parts)
+  defp find_module(parts) when parts == [], do: Kernel
+  defp find_module(parts), do: Module.concat(parts)
 
   # extracts function and arity
   # example: input: ["IO", "ANSI", "Docs", "print"]   -> {:print, nil}
@@ -57,6 +54,7 @@ defmodule InputParser do
     case Enum.reject(parts, &Regex.match?(~r(^[A-Z]), &1)) do
       [] ->
         {nil, nil}
+
       parts ->
         fun_arity_regex = ~r/^(?<fun>[a-z_]+)(?:\/(?<arity>\d+))?$/
         matches = Regex.named_captures(fun_arity_regex, List.last(parts))

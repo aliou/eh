@@ -2,13 +2,15 @@ defmodule Eh.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :eh,
-     version: "0.2.0",
-     elixir: "~> 1.0",
-     escript: [main_module: Eh],
-     description: description,
-     package: package,
-     deps: dependencies]
+    [
+      app: :eh,
+      version: "0.2.0",
+      elixir: "~> 1.0",
+      escript: [main_module: Eh],
+      description: description,
+      package: package,
+      deps: dependencies
+    ]
   end
 
   def application do
@@ -16,8 +18,7 @@ defmodule Eh.Mixfile do
   end
 
   def dependencies do
-    [{ :ex_doc, "~> 0.10.0", only: :dev },
-     {:earmark, ">= 0.0.0", only: :dev }]
+    [{:ex_doc, "~> 0.10.0", only: :dev}, {:earmark, ">= 0.0.0", only: :dev}]
   end
 
   defp description do
@@ -27,9 +28,11 @@ defmodule Eh.Mixfile do
   end
 
   defp package do
-    [ files: ~w[ lib README.md mix.exs LICENCE ],
+    [
+      files: ~w[ lib README.md mix.exs LICENCE ],
       contributors: ["Martin Frost"],
       licenses: ["Apache 2.0"],
-      links: %{ "GitHub" => "https://github.com/Frost/eh.git" } ]
+      links: %{"GitHub" => "https://github.com/Frost/eh.git"}
+    ]
   end
 end

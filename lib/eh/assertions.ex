@@ -29,6 +29,7 @@ defmodule Eh.Assertions do
 
   defmacro assert_found_docs(definition, match \\ nil) do
     if !match, do: match = definition
+
     quote bind_quoted: [definition: definition, match: match] do
       output = capture_eh(definition)
       assert output =~ doc_match_regex(match)
@@ -37,6 +38,7 @@ defmodule Eh.Assertions do
 
   defmacro refute_found_docs(definition, match \\ nil) do
     if !match, do: match = definition
+
     quote bind_quoted: [definition: definition, match: match] do
       output = capture_eh(definition)
       refute output =~ doc_match_regex(match)

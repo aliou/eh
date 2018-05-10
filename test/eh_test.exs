@@ -50,11 +50,12 @@ defmodule EhTest do
 
   test "Eh.functions lists public functions in a module" do
     output = Eh.functions("Eh")
+
     assert output == [
-      "Elixir.Eh.functions/1",
-      "Elixir.Eh.lookup/1",
-      "Elixir.Eh.main/1"
-    ]
+             "Elixir.Eh.functions/1",
+             "Elixir.Eh.lookup/1",
+             "Elixir.Eh.main/1"
+           ]
   end
 
   @tag :pending
