@@ -54,7 +54,9 @@ defmodule InputParser do
         {nil, nil}
 
       parts ->
-        fun_arity_regex = ~r/^(?<fun>[a-z_]+)(?:\/(?<arity>\d+))?$/
+        # FIXME: This regex also matches strings with a `?` or `!` in the middle
+        # of it (ex. "val?id"). It shouldn't.
+        fun_arity_regex = ~r/^(?<fun>[a-z_\?!]+)(?:\/(?<arity>\d+))?$/
         matches = Regex.named_captures(fun_arity_regex, List.last(parts))
         %{"arity" => arity, "fun" => fun} = matches
 
