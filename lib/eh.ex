@@ -9,6 +9,7 @@ defmodule Eh do
   # The main function has no @doc statement on purpose. The reason for this is
   # that I want to be able to test functions that has no documentation
   @doc false
+  def main([]), do: IO.puts(:stderr, "Usage: eh TERM")
   def main([definition | _tail]), do: lookup(definition)
 
   @doc """
